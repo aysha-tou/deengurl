@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DeenGurl — a welcoming space for Islamic knowledge, personal growth and education.">
+  <meta name="theme-color" content="#183d32">
+  <title>DeenGurl | Faith • Knowledge • Growth</title>
+  <style>
+    :root {
+      --green: #183d32;
+      --green-2: #285747;
+      --sage: #dce8dc;
+      --cream: #fbf8ef;
+      --paper: #fffdf8;
+      --gold: #bd9853;
+      --ink: #25342d;
+      --muted: #68766e;
+      --line: #e8e4d8;
+      --shadow: 0 14px 38px rgba(29, 55, 43, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--cream); color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif; line-height: 1.65;
+    }
+    a { color: inherit; }
+    .topbar {
+      background: var(--green); color: #f8f4e8; text-align: center;
+      padding: 8px 16px; font: 500  .78rem/1.4 Arial, sans-serif;
+      letter-spacing: .12em;
+    }
+    header {
+      position: sticky; top: 0; z-index: 10; background: rgba(251,248,239,.96);
+      backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+    }
+    .nav-wrap {
+      max-width: 1120px; margin: auto; padding: 15px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .brand { text-decoration: none; color: var(--green); font: 700 1.45rem Arial, sans-serif; letter-spacing: .08em; }
+    .brand span { color: var(--gold); }
+    nav { display: flex; gap: 22px; flex-wrap: wrap; }
+    nav a { text-decoration: none; font: 600 .86rem Arial, sans-serif; color: #40534a; }
+    nav a:hover { color: var(--gold); }
+    .menu-btn { display:none; border:1px solid var(--line); background:var(--paper); padding:8px 12px; border-radius:9px; }
+    .hero {
+      position: relative; overflow: hidden; background: var(--green); color: #fffdf6;
+      padding: 92px 24px 88px;
+    }
+    .hero:before, .hero:after {
+      content:""; position:absolute; border:1px solid rgba(221,195,137,.28);
+      width:360px; height:360px; border-radius:50%; pointer-events:none;
+    }
+    .hero:before { right:-120px; top:-190px; }
+    .hero:after { left:-230px; bottom:-270px; width:500px; height:500px; }
+    .hero-inner { max-width: 900px; margin:auto; position:relative; text-align:center; }
+    .eyebrow { color:#e2c98f; text-transform:uppercase; letter-spacing:.22em; font:600 .76rem Arial,sans-serif; }
+    h1 { font-size: clamp(2.8rem, 8vw, 5.6rem); line-height:1.04; margin:18px 0; font-weight:500; }
+    h1 span { color:#e2c98f; font-style:italic; }
+    .hero p { max-width:650px; margin:0 auto 28px; color:#e5ece5; font-size:1.12rem; }
+    .btn {
+      display:inline-block; padding:13px 22px; border-radius:999px; text-decoration:none;
+      background:#e2c98f; color:#213d31; font:700 .9rem Arial,sans-serif; border:0; cursor:pointer;
+    }
+    .btn:hover { background:#f0ddb0; transform:translateY(-1px); }
+    .btn-outline { background:transparent; color:#fffdf6; border:1px solid rgba(255,255,255,.5); margin-left:8px; }
+    main { max-width:1120px; margin:auto; padding: 0 24px 70px; }
+    section { padding:72px 0 8px; scroll-margin-top:90px; }
+    .section-head { text-align:center; max-width:700px; margin:0 auto 34px; }
+    .kicker { color:var(--gold); font:700 .74rem Arial,sans-serif; text-transform:uppercase; letter-spacing:.18em; }
+    h2 { color:var(--green); font-size:clamp(2rem,4vw,2.8rem); font-weight:500; margin:8px 0 12px; line-height:1.15; }
+    .section-head p, .muted { color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .card {
+      background:var(--paper); border:1px solid var(--line); border-radius:18px;
+      padding:25px; box-shadow:var(--shadow);
+    }
+    .icon { width:42px; height:42px; display:grid; place-items:center; border-radius:50%; background:var(--sage); color:var(--green); font-size:1.2rem; }
+    .card h3 { color:var(--green); margin:15px 0 7px; font-size:1.28rem; font-weight:600; }
+    .card p { margin:0; color:var(--muted); font-size:.98rem; }
+    .about {
+      display:grid; grid-template-columns: .9fr 1.1fr; gap:38px; align-items:center;
+      background:#f1f2e8; border-radius:24px; padding:36px;
+    }
+    .about-art {
+      min-height:260px; border-radius:18px; display:grid; place-items:center;
+      background:linear-gradient(145deg,#dce8dc,#f7edda); color:var(--green);
+      font-size:5rem; border:1px solid #d7dfd2;
+    }
+    .about h2 { margin-top:8px; }
+    .about p { color:#5e6d63; }
+    .quote {
+      margin:0; padding:28px; text-align:center; background:var(--green); color:#fffdf6;
+      border-radius:20px; font-size:1.3rem;
+    }
+    .quote small { display:block; margin-top:12px; color:#e2c98f; font: .78rem Arial,sans-serif; letter-spacing:.08em; }
+    .journal { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .prompt { background:var(--paper); border:1px solid var(--line); padding:25px; border-radius:18px; }
+    .prompt label { display:block; color:var(--green); font-weight:bold; margin-bottom:10px; }
+    textarea {
+      width:100%; min-height:120px; resize:vertical; border:1px solid #d9ded5;
+      border-radius:12px; padding:12px; font:1rem Arial,sans-serif; background:#fffefa;
+    }
+    .note { font: .83rem Arial,sans-serif; color:var(--muted); margin-top:10px; }
+    .resource-list { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+    .resource {
+      display:block; text-decoration:none; background:var(--paper); border:1px solid var(--line);
+      padding:18px 20px; border-radius:14px;
+    }
+    .resource strong { color:var(--green); display:block; }
+    .resource span { color:var(--muted); font-size:.9rem; }
+    .contact-box { background:#f1f2e8; border-radius:22px; text-align:center; padding:38px 24px; }
+    footer { background:#132f27; color:#e8eee7; text-align:center; padding:28px 20px; font: .85rem Arial,sans-serif; }
+    footer a { color:#e2c98f; }
+    @media (max-width:760px) {
+      .nav-wrap { padding:13px 18px; }
+      .menu-btn { display:block; }
+      nav { display:none; position:absolute; top:100%; left:0; right:0; background:var(--cream); padding:16px 22px 20px; border-bottom:1px solid var(--line); flex-direction:column; gap:14px; }
+      nav.open { display:flex; }
+      .hero { padding:72px 20px 68px; }
+      .btn-outline { margin:10px 0 0; }
+      .grid { grid-template-columns:1fr; }
+      .about, .journal { grid-template-columns:1fr; padding:22px; }
+      .resource-list { grid-template-columns:1fr; }
+      section { padding-top:55px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">A SPACE FOR FAITH, KNOWLEDGE & GROWTH</div>
+  <header>
+    <div class="nav-wrap">
+      <a class="brand" href="#home">DEEN<span>GURL</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav id="nav">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#islamic">Islamic Corner</a>
+        <a href="#growth">Personal Growth</a><a href="#learn">Learning</a><a href="#journal">Journal</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero" id="home">
+    <div class="hero-inner">
+      <div class="eyebrow">Welcome to DeenGurl</div>
+      <h1>Faith. Knowledge.<br><span>Becoming.</span></h1>
+      <p>A welcoming corner of the internet to learn something meaningful, nurture your character and keep growing — one small step at a time.</p>
+      <a class="btn" href="#explore">Explore the site</a>
+      <a class="btn btn-outline" href="#about">Our purpose</a>
+    </div>
+  </div>
+
+  <main>
+    <section id="explore">
+      <div class="section-head">
+        <div class="kicker">Find your next step</div>
+        <h2>A little space for a lot of growth</h2>
+        <p>Explore thoughtful reminders, practical ideas and learning resources. Take what is useful and keep asking questions.</p>
+      </div>
+      <div class="grid">
+        <article class="card"><div class="icon">☾</div><h3>Islamic Corner</h3><p>Gentle reminders, Islamic learning notes and reflections that encourage sincerity, good character and beneficial knowledge.</p></article>
+        <article class="card"><div class="icon">✧</div><h3>Personal Growth</h3><p>Build helpful habits, practise gratitude, set meaningful goals and become more intentional in everyday life.</p></article>
+        <article class="card"><div class="icon">✎</div><h3>Knowledge Hub</h3><p>Study tips, clear explanations and ideas to make learning feel more approachable and enjoyable.</p></article>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about">
+        <div class="about-art" aria-label="Decorative crescent moon">☾</div>
+        <div>
+          <div class="kicker">The idea behind the name</div>
+          <h2>Welcome to DeenGurl</h2>
+          <p>DeenGurl is a personal project built around three things: faith, personal development and education. It is for curious minds and anyone who believes that learning and becoming better are lifelong journeys.</p>
+          <p>This first version is a starting point. As the site grows, its articles, resources and reflections can grow with it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="islamic">
+      <div class="section-head">
+        <div class="kicker">Faith & reflection</div>
+        <h2>Islamic Corner</h2>
+        <p>Small reminders can help us pause, reflect and renew our intentions.</p>
+      </div>
+      <blockquote class="quote">
+        “So remember Me; I will remember you.”
+        <small>QUR'AN 2:152 — SURAH AL-BAQARAH</small>
+      </blockquote>
+      <div class="grid" style="margin-top:18px">
+        <article class="card"><h3>Good character</h3><p>Kindness, honesty, patience and keeping promises are meaningful ways to put good values into practice.</p></article>
+        <article class="card"><h3>Seeking knowledge</h3><p>Make space to learn, ask sincere questions and check information with reliable sources.</p></article>
+        <article class="card"><h3>Daily reflection</h3><p>Pause at the end of the day: what went well, what did you learn and what can you improve tomorrow?</p></article>
+      </div>
+      <p class="note">Learning note: Islamic articles on this site should be checked against the Qur'an, authentic Sunnah and qualified, trusted scholarship. This website is educational and is not a source of personal religious rulings.</p>
+    </section>
+
+    <section id="growth">
+      <div class="section-head">
+        <div class="kicker">One step at a time</div>
+        <h2>Personal Growth</h2>
+        <p>Progress does not have to be loud. Consistent, thoughtful steps matter.</p>
+      </div>
+      <div class="grid">
+        <article class="card"><h3>Set an intention</h3><p>Choose one meaningful thing you want to work on, and remind yourself why it matters.</p></article>
+        <article class="card"><h3>Build a small habit</h3><p>Start with something realistic. A little consistency is often more useful than a huge plan you cannot maintain.</p></article>
+        <article class="card"><h3>Be kind to yourself</h3><p>Notice what you are learning. Mistakes can become useful lessons when you respond with patience.</p></article>
+      </div>
+    </section>
+
+    <section id="learn">
+      <div class="section-head">
+        <div class="kicker">Keep curious</div>
+        <h2>Knowledge Hub</h2>
+        <p>A few trusted starting points for learning. Always check the source and date of information.</p>
+      </div>
+      <div class="resource-list">
+        <a class="resource" href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer"><strong>Khan Academy ↗</strong><span>Free lessons and practice across many school subjects.</span></a>
+        <a class="resource" href="https://www.britannica.com/" target="_blank" rel="noopener noreferrer"><strong>Encyclopaedia Britannica ↗</strong><span>Background reading and reference articles.</span></a>
+        <a class="resource" href="https://quran.com/" target="_blank" rel="noopener noreferrer"><strong>Quran.com ↗</strong><span>Read the Qur'an and explore translations and recitation.</span></a>
+        <a class="resource" href="https://sunnah.com/" target="_blank" rel="noopener noreferrer"><strong>Sunnah.com ↗</strong><span>Explore hadith collections and their references.</span></a>
+      </div>
+    </section>
+
+    <section id="journal">
+      <div class="section-head">
+        <div class="kicker">A moment for yourself</div>
+        <h2>Reflection Journal</h2>
+        <p>Use these prompts to think, plan and reflect. Your notes stay in this browser only.</p>
+      </div>
+      <div class="journal">
+        <div class="prompt">
+          <label for="gratitude">Three things I am grateful for</label>
+          <textarea id="gratitude" placeholder="Today, I am grateful for..."></textarea>
+        </div>
+        <div class="prompt">
+          <label for="goal">One thing I want to learn or improve</label>
+          <textarea id="goal" placeholder="A small step I can take is..."></textarea>
+        </div>
+      </div>
+      <p class="note">Privacy tip: avoid entering passwords, private contact details or anything you would not want stored on a shared device. Notes are not uploaded to DeenGurl.</p>
+    </section>
+
+    <section id="contact">
+      <div class="contact-box">
+        <div class="kicker">Stay thoughtful. Stay curious.</div>
+        <h2>Thank you for visiting</h2>
+        <p class="muted">DeenGurl is just getting started. May your search for beneficial knowledge bring goodness.</p>
+        <a class="btn" href="#home">Back to the top ↑</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div><strong>DEENGURL</strong> · Faith • Knowledge • Growth</div>
+    <div style="margin-top:7px">A learning project. Built with care.</div>
+  </footer>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const nav = document.getElementById('nav');
+    menuBtn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+  </script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qur'an Tracker | DeenGurl</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Georgia,serif;
+background:#faf8f1;
+color:#344238;
+line-height:1.7;
+}
+
+header{
+background:#263d30;
+color:white;
+padding:20px 7%;
+}
+
+.logo{font-size:27px;font-weight:bold}
+.logo span{color:#bd9b55}
+header a{color:white;text-decoration:none}
+
+.hero{
+text-align:center;
+padding:55px 20px;
+background:#e9eee5;
+}
+
+.hero h1{color:#263d30;font-size:38px}
+.hero p{color:#637066}
+
+main{max-width:800px;margin:35px auto;padding:0 20px}
+
+.box{
+background:white;
+padding:25px;
+border-radius:10px;
+border:1px solid #e9e7dd;
+margin-bottom:20px;
+}
+
+h2{color:#526b59;margin-bottom:15px}
+
+input,select,textarea{
+width:100%;
+padding:12px;
+margin:8px 0 15px;
+border:1px solid #d8dfd5;
+border-radius:5px;
+font-family:inherit;
+font-size:15px;
+background:white;
+}
+
+button{
+background:#526b59;
+color:white;
+padding:11px 18px;
+border:0;
+border-radius:5px;
+cursor:pointer;
+font-family:inherit;
+}
+
+button:hover{background:#263d30}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-bottom:20px;
+}
+
+.stat{
+background:#edf0e7;
+padding:18px 10px;
+text-align:center;
+border-radius:8px;
+}
+
+.stat strong{
+display:block;
+font-size:25px;
+color:#526b59;
+}
+
+.surah{
+padding:18px;
+border:1px solid #e9e7dd;
+border-radius:8px;
+margin-top:12px;
+background:#fff;
+}
+
+.surah h3{color:#526b59}
+
+.surah p{font-size:14px;color:#758076}
+
+.surah textarea{min-height:70px}
+
+.actions{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-top:10px;
+}
+
+.delete{background:#9b5147}
+
+.progress{
+height:12px;
+background:#e4e8df;
+border-radius:20px;
+overflow:hidden;
+margin:15px 0;
+}
+
+#progressFill{
+height:100%;
+width:0;
+background:#526b59;
+transition:width .3s;
+}
+
+footer{
+background:#263d30;
+color:white;
+text-align:center;
+padding:30px;
+margin-top:40px;
+}
+
+@media(max-width:550px){
+.hero h1{font-size:30px}
+.stats{grid-template-columns:1fr}
+.box{padding:18px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">Deen<span>Gurl.</span></div>
+<a href="index.html">← Back to Home</a>
+</header>
+
+<div class="hero">
+<h1>My Qur'an Journey</h1>
+<p>One surah at a time. One step closer.</p>
+</div>
+
+<main>
+
+<div class="box">
+<h2>My Progress</h2>
+
+<div class="stats">
+<div class="stat">
+<strong id="total">0</strong>
+<small>Surahs added</small>
+</div>
+
+<div class="stat">
+<strong id="done">0</strong>
+<small>Memorised</small>
+</div>
+
+<div class="stat">
+<strong id="percent">0%</strong>
+<small>Progress</small>
+</div>
+</div>
+
+<div class="progress">
+<div id="progressFill"></div>
+</div>
+
+<p id="progressText">Start your journey today!</p>
+</div>
+
+<div class="box">
+<h2>Add a Surah</h2>
+
+<label for="surahName">Surah name</label>
+<input id="surahName" placeholder="e.g. Al-Mulk">
+
+<label for="surahStatus">Memorisation status</label>
+<select id="surahStatus">
+<option value="learning">Currently learning</option>
+<option value="revision">Under revision</option>
+<option value="done">Memorised</option>
+</select>
+
+<label for="surahNotes">Revision notes</label>
+<textarea id="surahNotes" placeholder="Add your revision notes..."></textarea>
+
+<button onclick="addSurah()">Add Surah</button>
+</div>
+
+<div class="box">
+<h2>My Surahs</h2>
+<div id="surahList"></div>
+</div>
+
+</main>
+
+<footer>
+<div class="logo">Deen<span>Gurl.</span></div>
+<p>Learn with purpose. Grow with knowledge. Live with faith.</p>
+</footer>
+
+<script>
+const storageKey = "deengurlQuranTracker";
+
+function getSurahs(){
+try{
+return JSON.parse(localStorage.getItem(storageKey) || "[]");
+}catch{
+return [];
+}
+}
+
+function saveSurahs(surahs){
+localStorage.setItem(storageKey,JSON.stringify(surahs));
+}
+
+function addSurah(){
+const name=document.getElementById("surahName").value.trim();
+const status=document.getElementById("surahStatus").value;
+const notes=document.getElementById("surahNotes").value.trim();
+
+if(!name){
+alert("Please enter a surah name.");
+return;
+}
+
+const surahs=getSurahs();
+
+surahs.push({
+id:Date.now().toString(),
+name:name,
+status:status,
+notes:notes
+});
+
+saveSurahs(surahs);
+
+document.getElementById("surahName").value="";
+document.getElementById("surahNotes").value="";
+
+render();
+}
+
+function updateSurah(id,status){
+const surahs=getSurahs();
+
+const item=surahs.find(s=>s.id===id);
+
+if(item){
+item.status=status;
+saveSurahs(surahs);
+render();
+}
+}
+
+function updateNotes(id,value){
+const surahs=getSurahs();
+
+const item=surahs.find(s=>s.id===id);
+
+if(item){
+item.notes=value;
+saveSurahs(surahs);
+}
+}
+
+function deleteSurah(id){
+if(!confirm("Remove this surah from your tracker?"))return;
+
+const surahs=getSurahs().filter(s=>s.id!==id);
+
+saveSurahs(surahs);
+render();
+}
+
+function render(){
+const surahs=getSurahs();
+
+const total=surahs.length;
+const done=surahs.filter(s=>s.status==="done").length;
+const percent=total?Math.round(done/total*100):0;
+
+document.getElementById("total").textContent=total;
+document.getElementById("done").textContent=done;
+document.getElementById("percent").textContent=percent+"%";
+
+document.getElementById("progressFill").style.width=percent+"%";
+
+document.getElementById("progressText").textContent=
+total?done+" of "+total+" surahs memorised":
+"Start your journey today!";
+
+const list=document.getElementById("surahList");
+list.innerHTML="";
+
+if(!total){
+list.textContent="Your surahs will appear here.";
+return;
+}
+
+surahs.forEach(s=>{
+const card=document.createElement("div");
+card.className="surah";
+
+const title=document.createElement("h3");
+title.textContent=s.name;
+
+const status=document.createElement("select");
+
+[
+["learning","Currently learning"],
+["revision","Under revision"],
+["done","Memorised"]
+].forEach(([value,label])=>{
+const option=document.createElement("option");
+option.value=value;
+option.textContent=label;
+status.appendChild(option);
+});
+
+status.value=s.status;
+status.onchange=()=>updateSurah(s.id,status.value);
+
+const notes=document.createElement("textarea");
+notes.placeholder="Revision notes";
+notes.value=s.notes;
+notes.onchange=()=>updateNotes(s.id,notes.value);
+
+const actions=document.createElement("div");
+actions.className="actions";
+
+const remove=document.createElement("button");
+remove.className="delete";
+remove.textContent="Remove";
+remove.onclick=()=>deleteSurah(s.id);
+
+actions.appendChild(remove);
+
+card.append(title,status,notes,actions);
+list.appendChild(card);
+});
+}
+
+render();
+</script>
+
+</body>
+</html>

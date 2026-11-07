@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | DeenGurl</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Georgia,serif;
+background:#faf8f1;
+color:#344238;
+line-height:1.8;
+}
+
+header{
+background:#263d30;
+color:white;
+padding:20px 8%;
+}
+
+.logo{font-size:27px;font-weight:bold}
+.logo span{color:#bd9b55}
+header a{color:white;text-decoration:none}
+
+.hero{
+text-align:center;
+padding:65px 20px;
+background:#e9eee5;
+}
+
+.hero h1{
+font-size:42px;
+color:#263d30;
+}
+
+.hero p{color:#637066}
+
+main{
+max-width:800px;
+margin:45px auto;
+padding:0 20px;
+}
+
+.contact-box{
+background:white;
+padding:35px;
+border-radius:12px;
+border:1px solid #e9e7dd;
+text-align:center;
+}
+
+.contact-box h2{
+color:#526b59;
+margin-bottom:15px;
+}
+
+.contact-box p{margin-bottom:20px}
+
+.email{
+display:inline-block;
+padding:13px 22px;
+background:#526b59;
+color:white;
+text-decoration:none;
+border-radius:5px;
+overflow-wrap:anywhere;
+}
+
+.email:hover{background:#263d30}
+
+.topics{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-top:25px;
+}
+
+.topic{
+background:#edf0e7;
+padding:20px;
+border-radius:8px;
+text-align:center;
+}
+
+.topic h3{color:#526b59}
+
+footer{
+background:#263d30;
+color:white;
+text-align:center;
+padding:30px;
+margin-top:50px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">Deen<span>Gurl.</span></div>
+<a href="index.html">← Back to Home</a>
+</header>
+
+<div class="hero">
+<h1>Get in Touch</h1>
+<p>We would love to hear from you!</p>
+</div>
+
+<main>
+
+<div class="contact-box">
+
+<h2>Let's Connect</h2>
+
+<p>
+Have a question, suggestion or feedback?
+We welcome your thoughts and would be happy
+to hear from you.
+</p>
+
+<a class="email"
+href="mailto:aishahazaree@gmail.com?subject=Message%20from%20DeenGurl">
+Email DeenGurl
+</a>
+
+<p style="margin-top:20px">
+<strong>Email:</strong><br>
+aishahazaree@gmail.com
+</p>
+
+</div>
+
+<div class="topics">
+
+<div class="topic">
+<h3>📖 Islamic Knowledge</h3>
+<p>Questions and suggestions about our Islamic articles.</p>
+</div>
+
+<div class="topic">
+<h3>💡 Suggestions</h3>
+<p>Ideas that can help us improve DeenGurl.</p>
+</div>
+
+<div class="topic">
+<h3>💌 Feedback</h3>
+<p>Share your experience with our platform.</p>
+</div>
+
+</div>
+
+</main>
+
+<footer>
+<div class="logo">Deen<span>Gurl.</span></div>
+<p>Learn with purpose. Grow with knowledge. Live with faith.</p>
+<p>© 2026 DeenGurl. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

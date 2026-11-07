@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Reminders | DeenGurl</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,serif;background:#faf8f1;color:#344238;line-height:1.8}
+header{background:#263d30;color:white;padding:20px 8%}
+.logo{font-size:27px;font-weight:bold}
+.logo span{color:#bd9b55}
+header a{color:white;text-decoration:none}
+.hero{text-align:center;background:#e9eee5;padding:65px 20px}
+.hero h1{font-size:40px;color:#263d30}
+main{max-width:750px;margin:40px auto;padding:0 20px}
+.card{background:white;padding:35px;border-radius:12px;border:1px solid #e9e7dd;margin-bottom:25px}
+.label{color:#bd9b55;letter-spacing:2px;font-size:12px}
+.arabic{font-size:30px;text-align:center;color:#263d30;direction:rtl;margin:25px 0}
+.verse{text-align:center;font-size:19px;color:#526b59}
+.reference{text-align:center;color:#bd9b55;margin-top:15px}
+h2{color:#526b59;margin:20px 0 10px}
+button{background:#526b59;color:white;padding:13px 22px;border:0;border-radius:5px;cursor:pointer;font-family:inherit;font-size:15px}
+button:hover{background:#263d30}
+.center{text-align:center}
+footer{background:#263d30;color:white;text-align:center;padding:30px;margin-top:50px}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">Deen<span>Gurl.</span></div>
+<a href="index.html">← Back to Home</a>
+</header>
+
+<div class="hero">
+<p class="label">FAITH • REFLECTION • GROWTH</p>
+<h1>Daily Islamic Reminders</h1>
+<p>Little reminders to nourish your heart and strengthen your faith.</p>
+</div>
+
+<main>
+
+<div class="card center">
+<p class="label">TODAY'S REMINDER</p>
+<h2 id="title">Remember Allah</h2>
+<p class="arabic" id="arabic"></p>
+<p class="verse" id="translation"></p>
+<p class="reference" id="reference"></p>
+</div>
+
+<div class="card">
+<h2>Reflect on this</h2>
+<p id="reflection"></p>
+
+<h2>Put it into practice</h2>
+<p id="practice"></p>
+</div>
+
+<div class="center">
+<button onclick="nextReminder()">Discover Another Reminder ✨</button>
+</div>
+
+</main>
+
+<footer>
+<div class="logo">Deen<span>Gurl.</span></div>
+<p>Learn with purpose. Grow with knowledge. Live with faith.</p>
+</footer>
+
+<script>
+const reminders = [
+{
+title:"Remember Allah",
+arabic:"فَاذْكُرُونِي أَذْكُرْكُمْ",
+translation:"So remember Me; I will remember you.",
+reference:"Qur'an 2:152",
+reflection:"Remembering Allah brings our attention back to what truly matters.",
+practice:"Make time for dhikr and remember Allah throughout your day."
+},
+{
+title:"Never Lose Hope",
+arabic:"إِنَّ مَعَ الْعُسْرِ يُسْرًا",
+translation:"Indeed, with hardship comes ease.",
+reference:"Qur'an 94:6",
+reflection:"Difficult moments do not last forever. Keep trusting Allah.",
+practice:"Make du'a, remain patient and continue doing what is right."
+},
+{
+title:"Allah Knows Your Capacity",
+arabic:"لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا",
+translation:"Allah does not burden a soul beyond its capacity.",
+reference:"Qur'an 2:286",
+reflection:"Allah knows your circumstances and your abilities.",
+practice:"Take your responsibilities one step at a time and seek Allah's help."
+},
+{
+title:"Speak Kindly",
+arabic:"",
+translation:"Speak good to people.",
+reference:"Qur'an 2:83",
+reflection:"Our words can encourage others and bring kindness into everyday life.",
+practice:"Choose respectful and gentle words when speaking to people."
+},
+{
+title:"Be Thankful",
+arabic:"لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ",
+translation:"If you are grateful, I will surely increase you.",
+reference:"Qur'an 14:7",
+reflection:"Gratitude helps us recognise the blessings Allah has given us.",
+practice:"Take a moment to thank Allah for three blessings today."
+}
+];
+
+let current = new Date().getDate() % reminders.length;
+
+function displayReminder(){
+const item = reminders[current];
+
+document.getElementById("title").textContent=item.title;
+document.getElementById("arabic").textContent=item.arabic;
+document.getElementById("translation").textContent=item.translation;
+document.getElementById("reference").textContent=item.reference;
+document.getElementById("reflection").textContent=item.reflection;
+document.getElementById("practice").textContent=item.practice;
+}
+
+function nextReminder(){
+current=(current+1)%reminders.length;
+displayReminder();
+}
+
+displayReminder();
+</script>
+
+</body>
+</html>
